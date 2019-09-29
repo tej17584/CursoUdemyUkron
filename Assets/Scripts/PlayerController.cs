@@ -53,7 +53,9 @@ public class PlayerController : MonoBehaviour
         moveDirection.y = yStore;
         //Si esta en el suelo
         if (charController.isGrounded)
-        {
+        {    
+            //Si estamos en el piso, que no cambie la gravedad
+            moveDirection.y = 0f;
             //Hacemos el if por si salta 
             if (Input.GetButtonDown("Jump"))
             {
