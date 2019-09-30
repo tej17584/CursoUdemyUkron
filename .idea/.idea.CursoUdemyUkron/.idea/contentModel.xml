@@ -18,8 +18,16 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="CameraController.cs" t="Include" />
+          <e p="CheckPoints.cs" t="Include" />
+          <e p="DestroyOverTime.cs" t="Include" />
           <e p="GameMaganer.cs" t="Include" />
+          <e p="HealthManager.cs" t="Include" />
+          <e p="HealthPickUp.cs" t="Include" />
+          <e p="HurtPlayer.cs" t="Include" />
+          <e p="KillPlayer.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
+          <e p="UIManager.cs" t="Include" />
         </e>
         <e p="UniGLTF" t="Include">
           <e p="Core" t="Include">
