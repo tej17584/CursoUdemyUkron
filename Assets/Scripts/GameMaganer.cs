@@ -14,6 +14,10 @@ public class GameMaganer : MonoBehaviour
     //Efecto para morir
     public GameObject deathEffect;
 
+
+    //Monedas
+    public int currentCoins;
+
     private void Awake()
     {
         instance = this;
@@ -27,6 +31,9 @@ public class GameMaganer : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         //Tomamos la posicion en la que el playaer está 
         respawnPosition = PlayerController.instance.transform.position;
+
+        //Agregamos monedas vacías
+        AddCoins(0);
     }
 
     // Update is called once per frame
@@ -39,6 +46,7 @@ public class GameMaganer : MonoBehaviour
     {
         //iniciamos la corutina
         StartCoroutine(RespawnCo());
+        HealthManager.instance.PlayerKilled();
     }
 
     public IEnumerator RespawnCo()
@@ -70,5 +78,12 @@ public class GameMaganer : MonoBehaviour
     {
         respawnPosition = newSpawnPoint;
         Debug.Log("Spawn point set");
+    }
+
+    //metodo de monedas
+    public void AddCoins(int coinsAdd)
+    {
+        currentCoins += coinsAdd;
+        UIManager.instance.coinText.text = "" + currentCoins.ToString();
     }
 }

@@ -15,8 +15,9 @@ public class HealthManager : MonoBehaviour
     public float invincibleLength = 2f;
     private float invictCounter;
 
-    
-    
+    //Cosita para mover la barra
+    public Sprite[] healthBarImages;
+
     private void Awake()
     {
         instance = this;
@@ -25,7 +26,8 @@ public class HealthManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currenHealth = maxHealth;
+        ResetHealth();
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -71,12 +73,16 @@ public class HealthManager : MonoBehaviour
                 PlayerController.instance.knockBack();
                 invictCounter = invincibleLength;
             }
+
+            UpdateUI();
         }
     }
 
     public void ResetHealth()
     {
         currenHealth = maxHealth;
+        UIManager.instance.healthImage.enabled = true;
+        UpdateUI();
     }
 
     public void AddHealth(int AmountToHeal)
@@ -86,5 +92,41 @@ public class HealthManager : MonoBehaviour
         {
             currenHealth = maxHealth;
         }
+
+        UpdateUI();
+    }
+
+    //Nueva función para el health maganer
+
+    public void UpdateUI()
+    {
+        UIManager.instance.healthText.text = currenHealth.ToString();
+        switch (currenHealth)
+        {
+            case 5:
+                UIManager.instance.healthImage.sprite = healthBarImages[4];
+                break;
+            case 4:
+                UIManager.instance.healthImage.sprite = healthBarImages[3];
+                break;
+            case 3:
+                UIManager.instance.healthImage.sprite = healthBarImages[2];
+                break;
+            case 2:
+                UIManager.instance.healthImage.sprite = healthBarImages[1];
+                break;
+            case 1:
+                UIManager.instance.healthImage.sprite = healthBarImages[0];
+                break;
+            case 0:
+                UIManager.instance.healthImage.enabled = false;
+                break;
+        }
+    }
+
+    public void PlayerKilled()
+    {
+        currenHealth = 0;
+        UpdateUI();
     }
 }

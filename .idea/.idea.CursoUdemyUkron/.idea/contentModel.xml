@@ -18,8 +18,10 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="AudioManager.cs" t="Include" />
           <e p="CameraController.cs" t="Include" />
           <e p="CheckPoints.cs" t="Include" />
+          <e p="CoinPickup.cs" t="Include" />
           <e p="DestroyOverTime.cs" t="Include" />
           <e p="GameMaganer.cs" t="Include" />
           <e p="HealthManager.cs" t="Include" />

@@ -4800,6 +4800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cpOn: {fileID: 7511693670931712397}
   cpOff: {fileID: 7511693670926055156}
+  soundtoPlay: 4
 --- !u!135 &7511693671271798318
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4823,10 +4824,6 @@ PrefabInstance:
     - target: {fileID: 100002, guid: b5610ff0bbbbe3749a471e9c85a97444, type: 3}
       propertyPath: m_Name
       value: Checkpoint Off
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: b5610ff0bbbbe3749a471e9c85a97444, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b5610ff0bbbbe3749a471e9c85a97444, type: 3}
       propertyPath: m_LocalPosition.x

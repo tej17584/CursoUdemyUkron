@@ -15,8 +15,16 @@ public class UIManager : MonoBehaviour
 
     //Transición
     public bool fadeToBlack, fadeFromBlack;
+    
+    //Texto para el canvas
+    public Text healthText;
+    
+    //Imagen de la barra
+    public Image healthImage;
     // Start is called before the first frame update
 
+    //public text
+    public Text coinText;
     private void Awake()
     {
         instance = this;

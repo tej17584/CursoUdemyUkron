@@ -9,6 +9,8 @@ public class HealthPickUp : MonoBehaviour
 
     public bool isFullHeal;
 
+    public int soundtoPlay;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +29,12 @@ public class HealthPickUp : MonoBehaviour
             if (isFullHeal)
             {
                 HealthManager.instance.ResetHealth();
-                
             }
             else
             {
                 HealthManager.instance.AddHealth(healAmount);
             }
+            AudioManager.instance.PlaySFX(soundtoPlay);
         }
     }
 }

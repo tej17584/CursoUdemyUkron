@@ -6,7 +6,7 @@ using UnityEngine;
 public class CheckPoints : MonoBehaviour
 {
     public GameObject cpOn, cpOff;
-    
+    public int soundtoPlay;
     
     // Start is called before the first frame update
     void Start()
@@ -24,6 +24,7 @@ public class CheckPoints : MonoBehaviour
     {
         if (other.CompareTag("Player"))    
         {
+            AudioManager.instance.PlaySFX(soundtoPlay);
             GameMaganer.instance.SetSpawnPoint(transform.position);
             //Array de chekcpoints
             CheckPoints[] allCP = FindObjectsOfType<CheckPoints>();
