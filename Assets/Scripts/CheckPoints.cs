@@ -24,7 +24,7 @@ public class CheckPoints : MonoBehaviour
     {
         if (other.CompareTag("Player"))    
         {
-            AudioManager.instance.PlaySFX(soundtoPlay);
+            AudioManager.instance.PlaySfx(soundtoPlay);
             GameMaganer.instance.SetSpawnPoint(transform.position);
             //Array de chekcpoints
             CheckPoints[] allCP = FindObjectsOfType<CheckPoints>();

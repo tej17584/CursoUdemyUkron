@@ -27,7 +27,7 @@ public class CoinPickup : MonoBehaviour
         {
             GameMaganer.instance.AddCoins(value);
             Destroy(gameObject);
-            AudioManager.instance.PlaySFX(soundtoPlay);
+            AudioManager.instance.PlaySfx(soundtoPlay);
         }
     }
 }

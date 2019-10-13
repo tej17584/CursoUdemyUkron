@@ -8,6 +8,12 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
+    //Slider para musica
+
+    public Slider musicVolSlider, sfxVolSlider;
+    //game object para la pause
+    public GameObject pauseScreen, optionsScreen;
+
     public Image blackScreen;
 
     //velocidad
@@ -15,16 +21,17 @@ public class UIManager : MonoBehaviour
 
     //Transición
     public bool fadeToBlack, fadeFromBlack;
-    
+
     //Texto para el canvas
     public Text healthText;
-    
+
     //Imagen de la barra
     public Image healthImage;
     // Start is called before the first frame update
 
     //public text
     public Text coinText;
+
     private void Awake()
     {
         instance = this;
@@ -46,10 +53,9 @@ public class UIManager : MonoBehaviour
             if (blackScreen.color.a == 1f)
             {
                 fadeToBlack = false;
-                
             }
         }
-        
+
         if (fadeFromBlack)
         {
             //hacemos un degradado
@@ -59,8 +65,40 @@ public class UIManager : MonoBehaviour
             if (blackScreen.color.a == 0f)
             {
                 fadeFromBlack = false;
-                
             }
         }
+    }
+
+    public void Resume()
+    {
+        GameMaganer.instance.PauseUnPause();
+    }
+
+    public void OpenOptions()
+    {
+        optionsScreen.SetActive(true);
+    }
+
+    public void CloseOptions()
+    {
+        optionsScreen.SetActive(false);
+    }
+
+    public void LevelSelect()
+    {
+    }
+
+    public void MainMenu()
+    {
+    }
+
+    public void SetMusicLevel()
+    {
+        AudioManager.instance.SetMusicLevel();
+    }
+
+    public void SetSfxLevel()
+    {
+        AudioManager.instance.SetFxLevel();
     }
 }

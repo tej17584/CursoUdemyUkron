@@ -23,7 +23,7 @@ public class HurtPlayer : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             HealthManager.instance.Hurt();
-            AudioManager.instance.PlaySFX(soundtoPlay);
+            AudioManager.instance.PlaySfx(soundtoPlay);
         }
     }
 }

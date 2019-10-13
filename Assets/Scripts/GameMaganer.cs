@@ -39,6 +39,10 @@ public class GameMaganer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseUnPause();
+        }
     }
 
     //Agregamos una funcion
@@ -85,5 +89,27 @@ public class GameMaganer : MonoBehaviour
     {
         currentCoins += coinsAdd;
         UIManager.instance.coinText.text = "" + currentCoins.ToString();
+    }
+
+    //método para la pausa
+    public void PauseUnPause()
+    {
+        if (UIManager.instance.pauseScreen.activeInHierarchy)
+        {
+            UIManager.instance.pauseScreen.SetActive(false);
+            Time.timeScale = 1f;
+            Cursor.visible = false;
+            //Para bloquear el cursor
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            UIManager.instance.pauseScreen.SetActive(true);
+            UIManager.instance.CloseOptions();
+            Time.timeScale = 0f;
+            Cursor.visible = true;
+            //Para bloquear el cursos
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }

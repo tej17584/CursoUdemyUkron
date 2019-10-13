@@ -34,7 +34,7 @@ public class HealthPickUp : MonoBehaviour
             {
                 HealthManager.instance.AddHealth(healAmount);
             }
-            AudioManager.instance.PlaySFX(soundtoPlay);
+            AudioManager.instance.PlaySfx(soundtoPlay);
         }
     }
 }
