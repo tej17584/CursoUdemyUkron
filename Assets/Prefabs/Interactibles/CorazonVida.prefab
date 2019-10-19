@@ -60,6 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healAmount: 1
   isFullHeal: 1
+  soundtoPlay: 7
 --- !u!1001 &3652609694955894116
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMaganer : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class GameMaganer : MonoBehaviour
 
     //Monedas
     public int currentCoins;
+
+    public int levelEndMusic = 8;
+
+    public string LevelToLoad;
 
     private void Awake()
     {
@@ -111,5 +116,16 @@ public class GameMaganer : MonoBehaviour
             //Para bloquear el cursos
             Cursor.lockState = CursorLockMode.None;
         }
+    }
+
+    public IEnumerator LevelEndCo()
+    {
+        AudioManager.instance.PlayMusic(levelEndMusic);
+        PlayerController.instance.stopMove = true;
+        UIManager.instance.fadeFromBlack = true;
+        yield return new WaitForSeconds(2f);
+
+        PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "_unlocked", 1);
+        SceneManager.LoadScene(LevelToLoad);
     }
 }

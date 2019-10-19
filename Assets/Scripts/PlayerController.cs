@@ -37,9 +37,14 @@ public class PlayerController : MonoBehaviour
     public float knockBackLength = .5f;
     private float _knockBackCounter;
     public Vector2 knockBackPower;
-    
+
     //Variables para animacion de dolor de espinas
     public GameObject[] playerPieces;
+
+    //Variable para la fuerza al matar al enemigo
+    public float bounceForce = 8f;
+
+    public bool stopMove;
 
     private void Awake()
     {
@@ -56,7 +61,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isKnocking)
+        if (!isKnocking && !stopMove)
         {
             //Se guarda el movimiento
             float yStore = moveDirection.y;
@@ -109,7 +114,6 @@ public class PlayerController : MonoBehaviour
             {
                 //Si estamos en el piso, que no cambie la gravedad
                 moveDirection.y = 0f;
-               
             }
 
             moveDirection.y += Physics.gravity.y * Time.deltaTime * gravityScale;
@@ -120,6 +124,13 @@ public class PlayerController : MonoBehaviour
             {
                 isKnocking = false;
             }
+        }
+
+        if (stopMove)
+        {
+            moveDirection = Vector3.zero;
+            moveDirection.y += Physics.gravity.y * Time.deltaTime * gravityScale;
+            charController.Move(moveDirection);
         }
 
         Anim.SetFloat("Speed", Math.Abs(moveDirection.x) + Math.Abs(moveDirection.z));
@@ -133,6 +144,12 @@ public class PlayerController : MonoBehaviour
         _knockBackCounter = knockBackLength;
         Debug.Log("Knocked back");
         moveDirection.y = knockBackPower.y;
+        charController.Move(moveDirection * Time.deltaTime);
+    }
+
+    public void Bounce()
+    {
+        moveDirection.y = bounceForce;
         charController.Move(moveDirection * Time.deltaTime);
     }
 }

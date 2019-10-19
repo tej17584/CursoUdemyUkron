@@ -104,3 +104,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67d4506032ca2574bbd1de8cd00d9b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundtoPlay: 8
